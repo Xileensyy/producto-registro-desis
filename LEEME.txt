@@ -1,0 +1,14 @@
+1 - Descargar Laragon
+Sitio oficial: https://laragon.org/download
+
+Descargar la versión "Full" https://github.com/leokhoa/laragon/releases/download/8.2.3/laragon-wamp.exe
+
+Durante la instalación, desmarcar las 2 casillas de instalación
+
+2 - Mover el proyecto a C:\laragon\www (O la ruta donde se instaló)
+
+3 - Abrir la interfaz laragon (Asegurarse de tener prendido Apache y MySQL)
+
+4 - Desde la interfaz, darle a start all
+
+5 - Desde el navegador http://localhost/producto-registro-desis/
