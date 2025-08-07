@@ -11,7 +11,7 @@ try {
     $data = json_decode($json, true);
 
     if (!$data) {
-        echo json_encode(['error' => 'Datos inválidos.']);
+        echo json_encode(['success' => false, 'error' => 'Datos inválidos.']);
         exit;
     }
 
@@ -39,7 +39,15 @@ try {
     echo json_encode(['success' => true]);
     exit;
 
+} catch (PDOException $e) {
+    // Manejar error de llave duplicada (codigo SQLSTATE 23505 en PostgreSQL)
+    if ($e->getCode() === '23505') {
+        echo json_encode(['success' => false, 'error' => "El código '$codigo' ya está registrado."]);
+    } else {
+        echo json_encode(['success' => false, 'error' => 'Error en el servidor: ' . $e->getMessage()]);
+    }
+    exit;
 } catch (Exception $e) {
-    echo json_encode(['error' => 'Error en el servidor: ' . $e->getMessage()]);
+    echo json_encode(['success' => false, 'error' => 'Error inesperado: ' . $e->getMessage()]);
     exit;
 }

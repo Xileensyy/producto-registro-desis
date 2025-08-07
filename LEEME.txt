@@ -1,37 +1,57 @@
-1 - Descargar Laragon
-Sitio oficial: https://laragon.org/download
+Instrucciones para ejecutar el proyecto localmente
 
-Descargar la versión "Full" https://github.com/leokhoa/laragon/releases/download/8.2.3/laragon-wamp.exe
+Requisitos
+Laragon (versión Full)
+Versión de PHP utilizada:
+El entorno de desarrollo utilizado fue Laragon, el cual incluye una instalación preconfigurada de PHP.
+En esta prueba técnica se utilizó la versión PHP 8.3.16 (Win32 vs16 x64).
+PostgreSQL instalado y en funcionamiento (17.5-3) 
+En la instalación marcar PostgreSQL Server, pgAdmin 4, Command line tools
 
-Durante la instalación, desmarcar las 2 casillas de instalación
+Instalación de Laragon
+Descargar Laragon desde el sitio oficial:
+https://laragon.org/download
 
-2 - Mover el proyecto a C:\laragon\www (O la ruta donde se instaló)
+Descargar específicamente la versión Full desde:
+https://github.com/leokhoa/laragon/releases/download/8.2.3/laragon-wamp.exe
 
-3 - Abrir la interfaz laragon (Asegurarse de tener prendido Apache)
+Durante la instalación,
+desmarcar pretty url
+desmarcar las dos casillas finales antes de finalizar el asistente.
 
-4- Desde el Menu de Laragon : Menu → PHP → php.ini
-Ctrl+F y Buscar ambos:
+Configuración del entorno
+Mover el proyecto a la carpeta C:\laragon\www\ (o al directorio donde se haya instalado Laragon).
+
+Abrir Laragon.
+
+Habilitar las extensiones de PostgreSQL:
+En el menú de Laragon, ir a: Menu → PHP → php.ini
+
+Buscar (Control + F) y descomentar (eliminar el ; al inicio) las siguientes líneas: 
+
 extension=pgsql
 extension=pdo_pgsql
+Abrir Laragon e iniciar todos los servicios mediante el botón "Start All".
+(Asegurarse de tener marcado Apache)
 
-Quitar ; (para que no esten comentadas)
+Configuración de la base de datos
+Copiar el archivo config.example.php y renombrarlo a config.php.
 
-5 - Desde la interfaz, darle a start all
+Editar el archivo config.php con los parámetros de conexión locales de PostgreSQL.
 
-6 - Desde el navegador http://localhost/producto-registro-desis/
+Asegurarse de que el servidor de PostgreSQL esté activo.
 
+Importar la base de datos ejecutando el script SQL ubicado en:
+sql/estructura.sql
 
+Realizar inserts
+sql/inserts.sql
 
-Configuracion de BDD
+Ejecución de la aplicación
+Abrir un navegador web.
 
+Acceder al siguiente enlace:
+http://localhost/producto-registro-desis/
 
-
-1- Copia el archivo config.example.php y renombrarlo a config.php
-
-2- Editar config.php con tus datos locales de conexion PostgreSQL
-
-3-Tener PostgreSQL instalado y corriendo en tu pc.
-
-4-Importar la base de datos ejecutando el script SQL ubicado en sql/estructura.sql
-
-5-La aplicación usara los datos de config.php para conectarse a la base de datos.
+(En caso de descarga desde github) Acceder al siguiente enlace:
+http://localhost/producto-registro-desis-main/

@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
 
       const textoRespuesta = await response.text();
-      console.log("Respuesta cruda del servidor:", textoRespuesta);
+      console.log("Respuesta cruda del servidor:", textoRespuesta); //Ver exactamente que devuelve el backend, solo para desarrollo
 
       const result = JSON.parse(textoRespuesta);
 
@@ -107,8 +107,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const validarPrecio = (precio) => {
     if (precio === '') return "El precio del producto no puede estar en blanco.";
     if (!/^\d+(\.\d{1,2})?$/.test(precio)) return "El precio debe ser un número positivo con hasta dos decimales.";
+
+    const valor = parseFloat(precio);
+    if (valor > 99999999.99) return "El precio no puede ser mayor a 99,999,999.99."; //Si no se pone esta validación se devuelve un error desde SQL
+
     return null;
   };
+
 
   const validarMateriales = (materiales) => {
     return materiales.length < 2 ? "Debe seleccionar al menos dos materiales." : null;
