@@ -33,16 +33,7 @@ CREATE TABLE productos (
     sucursal_id INTEGER NOT NULL REFERENCES sucursales(id),
     moneda_id INTEGER NOT NULL REFERENCES monedas(id),
     precio NUMERIC(10,2) NOT NULL CHECK (precio > 0),
-    descripcion TEXT NOT NULL CHECK (char_length(descripcion) BETWEEN 10 AND 1000),
-
-    -- Validaciones adicionales REGEX
-    CHECK (
-        codigo_producto ~ '^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{5,15}$'
-    ),
-    CHECK (
-        char_length(nombre_producto) BETWEEN 2 AND 50
-    ),
-	CHECK (precio::TEXT ~ '^\\d+(\\.\\d{1,2})?$')
+    descripcion TEXT NOT NULL CHECK (char_length(descripcion) BETWEEN 10 AND 1000)
 );
 
 -- Relacion N:N entre productos y materiales

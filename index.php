@@ -141,6 +141,6 @@ bodegaSelect.addEventListener('change', () => {
   sucursalSelect.disabled = false;
 });
 </script>
-
+<script src="js/validaciones.js" defer></script>
 </body>
 </html>
