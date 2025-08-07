@@ -7,8 +7,31 @@ Durante la instalación, desmarcar las 2 casillas de instalación
 
 2 - Mover el proyecto a C:\laragon\www (O la ruta donde se instaló)
 
-3 - Abrir la interfaz laragon (Asegurarse de tener prendido Apache y MySQL)
+3 - Abrir la interfaz laragon (Asegurarse de tener prendido Apache)
 
-4 - Desde la interfaz, darle a start all
+4- Desde el Menu de Laragon : Menu → PHP → php.ini
+Ctrl+F y Buscar ambos:
+extension=pgsql
+extension=pdo_pgsql
 
-5 - Desde el navegador http://localhost/producto-registro-desis/
+Quitar ; (para que no esten comentadas)
+
+5 - Desde la interfaz, darle a start all
+
+6 - Desde el navegador http://localhost/producto-registro-desis/
+
+
+
+Configuracion de BDD
+
+
+
+1- Copia el archivo config.example.php y renombrarlo a config.php
+
+2- Editar config.php con tus datos locales de conexion PostgreSQL
+
+3-Tener PostgreSQL instalado y corriendo en tu pc.
+
+4-Importar la base de datos ejecutando el script SQL ubicado en sql/estructura.sql
+
+5-La aplicación usara los datos de config.php para conectarse a la base de datos.
